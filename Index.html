@@ -1,57 +1,23 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rico Downloader</title>
+  <title>Rico Music Downloader</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1> Welcome to my website</h1>
+    <h1>Rico Music Downloader</h1>
+    <input type="text" id="searchInput" placeholder="Search for music..." onkeyup="searchMusic()">
   </header>
 
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search for a movie..." onkeyup="searchMovies()" />
-  </div>
-</div>
+  <section class="songs" id="songList">
+    <!-- Songs will appear here -->
   </section>
 
-  <footer>
-    <p>Created by rico</p>
-  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+```
 
-  <script>
-  async function searchMovies() {
-    let query = document.getElementById("searchInput").value.trim();
-    if (!query) return;
-
-    const apiKey = "8556e13cbaf7d8fe8b01fcf6eca7a4ff"; // ← Replace this
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=apiKey   query={encodeURIComponent(query)}`;
-
-    const res = await fetch(url);
-    const data = await res.json();
-
-    const moviesContainer = document.querySelector(".movies");
-    moviesContainer.innerHTML = "";
-
-    data.results.slice(0, 6).forEach(movie => {
-      const poster = movie.poster_path
-        ? `https://image.tmdb.org/t/p/w300movie.poster_path`
-        : "https://via.placeholder.com/200x300?text=No+Image`;
-
-      const card = `
-        <div class="movie-card">
-          <img src="{poster}" alt="movie.title" />
-          <h3>{movie.title}</h3>
-          <p>${movie.release_date || "N/A"}</p>
-          <a href="#">Watch</a>
-          <a href="#">Download</a>
-        </div>
-      `;
-      moviesContainer.innerHTML += card;
-    });
-  }
-</script>
-
+---
