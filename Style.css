@@ -1,13 +1,10 @@
 
 ```css
 body {
-  background: linear-gradient(135deg, #a8d0ff, #6ea8fe);
-  color: #1a1a1a;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  background: url('https://files.catbox.moe/e65tfk.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
-
+``
 header, footer {
   text-align: center;
   padding: 1rem;
