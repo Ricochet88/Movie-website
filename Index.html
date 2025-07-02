@@ -47,15 +47,35 @@
   </footer>
 
   <script>
-    function searchMovies() {
-      let input = document.getElementById("searchInput").value.toLowerCase();
-      let movieCards = document.querySelectorAll(".movie-card");
+  async function searchMovies() {
+    let query = document.getElementById("searchInput").value.trim();
+    if (!query) return;
 
-      movieCards.forEach(function (card) {
-        let title = card.querySelector("h3").textContent.toLowerCase();
-        card.style.display = title.includes(input) ? "block" : "none";
-      });
-    }
-  </script>
-</body>
-</html>
+    const apiKey = "8556e13cbaf7d8fe8b01fcf6eca7a4ff"; // ← Replace this
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=apiKey   query={encodeURIComponent(query)}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const moviesContainer = document.querySelector(".movies");
+    moviesContainer.innerHTML = "";
+
+    data.results.slice(0, 6).forEach(movie => {
+      const poster = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w300movie.poster_path`
+        : "https://via.placeholder.com/200x300?text=No+Image`;
+
+      const card = `
+        <div class="movie-card">
+          <img src="{poster}" alt="movie.title" />
+          <h3>{movie.title}</h3>
+          <p>${movie.release_date || "N/A"}</p>
+          <a href="#">Watch</a>
+          <a href="#">Download</a>
+        </div>
+      `;
+      moviesContainer.innerHTML += card;
+    });
+  }
+</script>
+
