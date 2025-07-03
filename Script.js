@@ -18,13 +18,13 @@ document.body.appendChild(btn);
 
 // WhatsApp Buttons
 const group1 = document.createElement("a");
-group1.href = "https://chat.whatsapp.com/YOUR-GROUP-ID-1";
+group1.href = "https://chat.whatsapp.com/CilU9rijiMPCbhncidhEFH";
 group1.target = "_blank";
 group1.className = "whatsapp-btn";
 group1.textContent = "Join Group 1";
 
 const group2 = document.createElement("a");
-group2.href = "https://chat.whatsapp.com/YOUR-GROUP-ID-2";
+group2.href = "https://chat.whatsapp.com/CilU9rijiMPCbhncidhEFH";
 group2.target = "_blank";
 group2.className = "whatsapp-btn";
 group2.textContent = "Join Group 2";
